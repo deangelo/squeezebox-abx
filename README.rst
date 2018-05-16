@@ -10,7 +10,7 @@ Usage:
 
 create a player configuration file, see example player.json with URLs pointing to your squeezebox players
 
-::
+  ::
     $ python3 abx.py  player.json -o results.json --random
     Running ABX test with 2 sources
     Keyboard usage:
