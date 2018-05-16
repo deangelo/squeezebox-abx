@@ -1,0 +1,4 @@
+[
+ { "name": "A", "url": "http://localhost/?p0=mixer&p1=volume&p2=%d&player=10.0.1.2", "volume": 50},
+ { "name": "B", "url": "http://localhost/?p0=mixer&p1=volume&p2=%d&player=10.0.1.3", "volume": 60}
+]
