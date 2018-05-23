@@ -35,6 +35,16 @@ class LMSSwitcher(object):
         #print(url)
         urllib.request.urlopen(url).read()
 
+    def volume_inc(self):
+        self.choices[self.active]["volume"] = self.choices[self.active]["volume"] + 1
+        self.on(self.active)
+        print(choices)
+
+    def volume_dec(self):
+        self.choices[self.active]["volume"] = self.choices[self.active]["volume"] - 1
+        self.on(self.active)
+        print(choices)
+
     def __len__(self):
         return len(self.choices)
 
@@ -81,7 +91,13 @@ class ABX(object):
                 print("Invalid source:",i, "max:", len(self.switch))
         except ValueError:
             try:
-                if value.startswith("q"):
+                if value.startswith("+"):
+                    # increase volume
+                    self.switch.volume_inc()
+                elif value.startswith("-"):
+                    # increase volume
+                    self.switch.volume_dec()
+                elif value.startswith("q"):
                     # mute
                     for l in range(len(self.switch)):
                         self.switch.off(l)
@@ -155,6 +171,8 @@ if __name__ == "__main__":
     print(" - 1..9: Select source")
     print(" - 0:    Select unknown source")
     print(" - q:    Mute all sound")
+    print(" - +:    Increase volume of current source")
+    print(" - -:    Decreas volume of current source")
     print(" - e:    Evaluate and save results to file")
     print(" - n:    Next trial")
     print(" - p [1-9] [comment] choose X=n, for user p. [can be any character except the other commands")
